@@ -22,7 +22,7 @@ namespace EventTracker.Mediator
             if (!String.IsNullOrEmpty(interactionInfo.EventText))
                 sb.AppendFormat(", Info: {0}", interactionInfo.EventText);
 
-            //raised event
+            //Raise event
             NewLogEvent(sb.ToString());
         }
 
