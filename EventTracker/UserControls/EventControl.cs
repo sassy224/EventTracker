@@ -12,15 +12,12 @@ using System.Windows.Forms;
 
 namespace EventTracker.UserControls
 {
-    public partial class EventControl : UserControl
+    public partial class EventControl : UserControl, IPublisherControl
     {
         public EventControl()
         {
             InitializeComponent();
         }
-
-        //The delegate that encapsulates any method that takes an object and an InteractionInfoEventArgs as parameters and return no value
-        public delegate void InteractionHandler(InteractionInfoEventArgs interactInfo);
 
         //The event that this control publish
         public event InteractionHandler InteractionOccursEvent;

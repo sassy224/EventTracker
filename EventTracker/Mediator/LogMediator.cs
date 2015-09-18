@@ -13,7 +13,6 @@ namespace EventTracker.Mediator
         public event LogHandler NewLogEvent;
 
         //The method which fires the event.
-        //This method also has the same signature as InteractionOccursEvent of EventControl, because this mediator will subscribe this method to that event
         public void Log(InteractionInfoEventArgs interactionInfo)
         {
             //Build log message
@@ -25,6 +24,24 @@ namespace EventTracker.Mediator
 
             //raised event
             NewLogEvent(sb.ToString());
+        }
+
+        /// <summary>
+        /// Allow this mediator to listen to an event that the IPublisherControl publishes
+        /// </summary>
+        /// <param name="control"></param>
+        public void SubscribeToControl(UserControls.IPublisherControl control)
+        {
+            control.InteractionOccursEvent += this.Log;
+        }
+
+        /// <summary>
+        /// Allow an IReceiverControl to listen to an event that this mediator publishes
+        /// </summary>
+        /// <param name="control"></param>
+        public void PublishToControl(UserControls.IReceiverControl control)
+        {
+            this.NewLogEvent += control.AddItemToList;
         }
     }
 }

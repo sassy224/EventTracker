@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EventTracker.UserControls
 {
-    public partial class ListingControl : UserControl
+    public partial class ListingControl : UserControl, IReceiverControl
     {
         public ListingControl()
         {
