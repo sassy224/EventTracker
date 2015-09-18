@@ -23,7 +23,11 @@ namespace EventTracker.Mediator
                 sb.AppendFormat(", Info: {0}", interactionInfo.EventText);
 
             //Raise event
-            NewLogEvent(sb.ToString());
+            if (NewLogEvent != null)
+            {
+                //Notify subscribers
+                NewLogEvent(sb.ToString());
+            }
         }
 
         /// <summary>
