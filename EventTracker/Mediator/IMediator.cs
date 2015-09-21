@@ -9,27 +9,13 @@ using System.Windows.Forms;
 
 namespace EventTracker.Mediator
 {
-    //The delegate that encapsulates any method that takes a string as parameter and return no value
-    public delegate void LogHandler(string logMessage);
-
     public interface IMediator
     {
-        //The event that this interface publish
-        event LogHandler NewLogEvent;
-
-        //The method which fires the event.
-        void Log(InteractionInfoEventArgs interactionInfo);
-
         /// <summary>
-        /// Interface method to listen to an event of a control
+        /// Interface method to map event from a control to a method in another control
         /// </summary>
-        /// <param name="control"></param>
-        void SubscribeToControl(IPublisherControl control);
-
-        /// <summary>
-        /// Interface method to allow a control to listen to event of this interface
-        /// </summary>
-        /// <param name="control"></param>
-        void PublishToControl(IReceiverControl control);
+        /// <param name="pubControl"></param>
+        /// <param name="recControl"></param>
+        void MapEventToControl(IPublisherControl pubControl, IReceiverControl recControl);
     }
 }

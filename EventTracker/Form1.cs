@@ -21,10 +21,7 @@ namespace EventTracker
             _mediator = mediator;
 
             //Let mediator listen to event InteractionOccursEvent of EventControl
-            _mediator.SubscribeToControl(evtCtrl);
-
-            //Let ListingControl listen to event NewLogEvent of Mediator
-            _mediator.PublishToControl(lstCtrl);
+            _mediator.MapEventToControl(evtCtrl, lstCtrl);
         }
     }
 }

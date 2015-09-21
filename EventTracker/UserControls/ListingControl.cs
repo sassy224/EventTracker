@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventTracker.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +18,17 @@ namespace EventTracker.UserControls
             InitializeComponent();
         }
 
-        public void AddItemToList(string message)
+        public void AddItemToList(InteractionInfoEventArgs interactionInfo)
         {
-            if (!String.IsNullOrEmpty(message))
-            {
-                //Insert at first position, latest first
-                lstLog.Items.Insert(0, message);
-            }
+            //Build log message
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Control: {0}, ", interactionInfo.ControlName);
+            sb.AppendFormat("Event: {0}", interactionInfo.EventName);
+            if (!String.IsNullOrEmpty(interactionInfo.EventText))
+                sb.AppendFormat(", Info: {0}", interactionInfo.EventText);
+
+            //Insert at first position, latest first
+            lstLog.Items.Insert(0, sb.ToString());
         }
     }
 }

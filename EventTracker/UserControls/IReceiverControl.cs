@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventTracker.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace EventTracker.UserControls
 {
     public interface IReceiverControl : IControl
     {
-        void AddItemToList(string message);
+        void AddItemToList(InteractionInfoEventArgs interactionInfo);
     }
 }
